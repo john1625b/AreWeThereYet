@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Button but1 = (Button) findViewById(R.id.butt1);
         but1.setOnClickListener(new View.OnClickListener() {
+            int buttonClickCount = 0;
             @Override
             public void onClick(View v) {
-                but1.setText("button clicked");
+                but1.setText("button clicked " + buttonClickCount + " times");
+                buttonClickCount++;
             }
         });
     }
