@@ -6,12 +6,16 @@ import android.view.View;
 import android.widget.Button; // import general button class
 import android.widget.TextView; // import general textView class
 
-import com.android.volley.Request;
+import com.android.volley.Request; // import volley http requester library
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject; // import json parsing library
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.google.com";
+        String url ="https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=Washington,DC&destinations=Nwe+Yrk+City,NY&key=AIzaSyDlhkW8SbeMnqWvenKzsP0_A2-SpqQg7hY";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -41,7 +45,25 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.substring(0,500));
+//                        mTextView.setText("Response is: "+ response.substring(0,500));
+                        try {
+                            JSONObject reader = new JSONObject(response);
+//                            String rowsString = reader.getString("rows");
+//                            JSONObject rowsObject = new JSONObject(rowsString);
+                            JSONArray rows = reader.getJSONArray("rows");
+                            JSONObject row0 = rows.getJSONObject(0);
+                            JSONArray elements = row0.getJSONArray("elements");
+                            JSONObject elements0 = elements.getJSONObject(0);
+                            JSONObject duration = elements0.getJSONObject("duration");
+                            String value = duration.getString("text");
+                            mTextView.setText(value);
+//                            mTextView.setText("Response is: "+ rows);
+                        } catch (JSONException e) {
+                            mTextView.setText("reacher catch block");
+                            e.printStackTrace();
+                        }
+
+
                     }
                 }, new Response.ErrorListener() {
             @Override
