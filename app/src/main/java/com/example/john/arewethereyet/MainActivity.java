@@ -32,11 +32,8 @@ public class MainActivity extends AppCompatActivity {
 // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
         but1.setOnClickListener(new View.OnClickListener() {
-            int buttonClickCount = 0;
             @Override
             public void onClick(View v) {
-//                but1.setText("button clicked " + buttonClickCount + " times");
-//                buttonClickCount++;
                 final String currLocationString = currentLocation.getText().toString();
                 final String destLocationString = desinationLocation.getText().toString();
                 String url ="https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + currLocationString +
@@ -47,12 +44,8 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                // Display the first 500 characters of the response string.
-//                        mTextView.setText("Response is: "+ response.substring(0,500));
                                 try {
                                     JSONObject reader = new JSONObject(response);
-//                            String rowsString = reader.getString("rows");
-//                            JSONObject rowsObject = new JSONObject(rowsString);
                                     JSONArray rows = reader.getJSONArray("rows");
                                     JSONObject row0 = rows.getJSONObject(0);
                                     JSONArray elements = row0.getJSONArray("elements");
@@ -61,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                                     String value = duration.getString("text");
                                     mTextView.setText(value);
                                 } catch (JSONException e) {
-                                    mTextView.setText("couldn't parse responseJSON");
+                                    mTextView.setText("Error: make sure locations are accessible by roads");
                                     e.printStackTrace();
                                 }
 
@@ -70,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        mTextView.setText("volley request error");
+                        mTextView.setText("Network error, check internet and remember to not use spaces");
                     }
                 });
 // Add the request to the RequestQueue.
