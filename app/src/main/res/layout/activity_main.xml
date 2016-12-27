@@ -11,18 +11,6 @@
     tools:context="com.example.john.arewethereyet.MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Distance to your destination:"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/text"
-        />
-
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -40,5 +28,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/butt1"
         android:text="send"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Distance to your destination:"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="32sp"
+        android:id="@+id/text"
         />
 </LinearLayout>
