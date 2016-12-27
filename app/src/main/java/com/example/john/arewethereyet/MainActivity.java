@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                     mTextView.setTextColor(Color.GRAY);
                                 } catch (JSONException e) {
                                     mTextView.setTextSize(16);
-                                    String errorMessage = "Error: make sure locations are accessible by roads and be more specific";
+                                    String errorMessage = "Error: make sure locations are accessible by roads or be more specific";
                                     mTextView.setText(errorMessage);
                                     mTextView.setTextColor(Color.RED);
                                     e.printStackTrace();
