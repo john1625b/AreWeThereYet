@@ -1,5 +1,6 @@
 package com.example.john.arewethereyet;
 
+import android.graphics.Color; // import general color class for text color
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -53,8 +54,12 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject duration = elements0.getJSONObject("duration");
                                     String value = duration.getString("text");
                                     mTextView.setText(value);
+                                    mTextView.setTextSize(32);
+                                    mTextView.setTextColor(Color.GRAY);
                                 } catch (JSONException e) {
+                                    mTextView.setTextSize(16);
                                     mTextView.setText("Error: make sure locations are accessible by roads");
+                                    mTextView.setTextColor(Color.RED);
                                     e.printStackTrace();
                                 }
 
@@ -63,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        mTextView.setTextSize(16);
                         mTextView.setText("Network error, make sure you are connected to WI-FI");
+                        mTextView.setTextColor(Color.RED);
                     }
                 });
 // Add the request to the RequestQueue.
