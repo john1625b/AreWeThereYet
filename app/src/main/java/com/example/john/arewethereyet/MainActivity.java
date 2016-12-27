@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         but1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String currLocationString = currentLocation.getText().toString();
-                final String destLocationString = desinationLocation.getText().toString();
+                final String currLocationString = currentLocation.getText().toString().replace(" ","+");
+                final String destLocationString = desinationLocation.getText().toString().replace(" ","+");
                 String url ="https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + currLocationString +
                         "&destinations="+ destLocationString + "&key=AIzaSyDlhkW8SbeMnqWvenKzsP0_A2-SpqQg7hY";
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        mTextView.setText("Network error, check internet and remember to not use spaces");
+                        mTextView.setText("Network error, make sure you are connected to WI-FI");
                     }
                 });
 // Add the request to the RequestQueue.
