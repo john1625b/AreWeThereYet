@@ -58,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                                     mTextView.setTextColor(Color.GRAY);
                                 } catch (JSONException e) {
                                     mTextView.setTextSize(16);
-                                    mTextView.setText("Error: make sure locations are accessible by roads or be more specific");
+                                    String errorMessage = "Error: make sure locations are accessible by roads and be more specific";
+                                    mTextView.setText(errorMessage);
                                     mTextView.setTextColor(Color.RED);
                                     e.printStackTrace();
                                 }
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         mTextView.setTextSize(16);
-                        mTextView.setText("Network error, make sure you are connected to WI-FI");
+                        String errorMessage = "Network error, make sure you are connected to WI-FI";
+                        mTextView.setText(errorMessage);
                         mTextView.setTextColor(Color.RED);
                     }
                 });
