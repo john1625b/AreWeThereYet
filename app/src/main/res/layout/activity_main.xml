@@ -12,13 +12,13 @@
     android:orientation="vertical">
 
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="enter current location"
         android:id="@+id/currentLocation"
         />
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="enter destination"
         android:id="@+id/destinationLocation"

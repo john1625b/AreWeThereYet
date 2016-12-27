@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                     mTextView.setTextColor(Color.GRAY);
                                 } catch (JSONException e) {
                                     mTextView.setTextSize(16);
-                                    mTextView.setText("Error: make sure locations are accessible by roads");
+                                    mTextView.setText("Error: make sure locations are accessible by roads or be more specific");
                                     mTextView.setTextColor(Color.RED);
                                     e.printStackTrace();
                                 }
