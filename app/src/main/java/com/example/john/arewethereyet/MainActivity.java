@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         final Button but1 = (Button) findViewById(R.id.butt1);
         final TextView mTextView = (TextView) findViewById(R.id.text);
         final EditText currentLocation = (EditText) findViewById(R.id.currentLocation);
-        final EditText desinationLocation = (EditText) findViewById(R.id.destinationLocation);
+        final EditText destinationLocation = (EditText) findViewById(R.id.destinationLocation);
 
 // Instantiate the RequestQueue.
         final RequestQueue queue = Volley.newRequestQueue(this);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String currLocationString = currentLocation.getText().toString().replace(" ","+");
-                final String destLocationString = desinationLocation.getText().toString().replace(" ","+");
+                final String destLocationString = destinationLocation.getText().toString().replace(" ","+");
                 String url ="https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + currLocationString +
                         "&destinations="+ destLocationString + "&key=AIzaSyDlhkW8SbeMnqWvenKzsP0_A2-SpqQg7hY";
 
