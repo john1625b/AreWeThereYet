@@ -3,6 +3,7 @@ package com.example.john.arewethereyet;
 import android.graphics.Color; // import general color class for text color
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button; // import general button class
 import android.widget.EditText;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        locationGPS myLoc = new locationGPS();
+        final double lat = myLoc.getLat();
+        final String latString = String.valueOf(lat);
         final Button but1 = (Button) findViewById(R.id.butt1);
         final TextView mTextView = (TextView) findViewById(R.id.text);
         final EditText currentLocation = (EditText) findViewById(R.id.currentLocation);
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject duration = elements0.getJSONObject("duration");
                                     String value = duration.getString("text");
                                     mTextView.setText(value);
+                                    mTextView.setText(latString);
                                     mTextView.setTextSize(32);
                                     mTextView.setTextColor(Color.GRAY);
                                 } catch (JSONException e) {
